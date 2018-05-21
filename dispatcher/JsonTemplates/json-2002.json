@@ -1,0 +1,4 @@
+{
+    "invoiceref": "#valueof($.Envelope.Body.Resultado.referenciaFactura.referenciaFactura)",
+    "messagepayment": "#valueof($.Envelope.Body.Resultado.mensaje)"
+}

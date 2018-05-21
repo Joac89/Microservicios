@@ -1,0 +1,4 @@
+{
+    "balancetopay": "#valueof($.Envelope.Body.ResultadoConsulta.totalPagar)",
+    "invoiceref": "#valueof($.Envelope.Body.ResultadoConsulta.referenciaFactura.referenciaFactura)"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ResponseDeal",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "Codigo de mensaje Http"
+    },
+    "message": {
+      "type": "string",
+      "description": "Mensaje de respuesta del servicio"
+    },
+    "data": {
+      "properties": {
+        "id": {
+          "type": "number",
+          "format": "long",
+          "description": ""
+        },
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "invoicekey": {
+          "type": "string",
+          "description": ""
+        },
+        "state": {
+          "type": "boolean",
+          "description": ""
+        },
+        "url": {
+          "type": "string",
+          "description": ""
+        },
+        "template":{
+          "type": "string",
+          "description": ""
+        },
+        "type":{
+          "type": "string",
+          "description": ""
+        },
+        "requesttemplate":{
+          "type": "string",
+          "description": ""
+        },
+        "numrequest":{
+          "type": "number",
+          "description": ""
+        }
+      }
+    }
+  },
+  "required": [
+    "code"
+  ]
+}

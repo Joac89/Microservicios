@@ -1,0 +1,12 @@
+/home/joac89/Universidad/taller_final/userinterface/obj/Debug/netcoreapp2.0/userinterface.csprojResolveAssemblyReference.cache
+/home/joac89/Universidad/taller_final/userinterface/obj/Debug/netcoreapp2.0/userinterface.csproj.CoreCompileInputs.cache
+/home/joac89/Universidad/taller_final/userinterface/obj/Debug/netcoreapp2.0/userinterface.AssemblyInfoInputs.cache
+/home/joac89/Universidad/taller_final/userinterface/obj/Debug/netcoreapp2.0/userinterface.AssemblyInfo.cs
+/home/joac89/Universidad/taller_final/userinterface/bin/Debug/netcoreapp2.0/userinterface.deps.json
+/home/joac89/Universidad/taller_final/userinterface/bin/Debug/netcoreapp2.0/userinterface.runtimeconfig.json
+/home/joac89/Universidad/taller_final/userinterface/bin/Debug/netcoreapp2.0/userinterface.runtimeconfig.dev.json
+/home/joac89/Universidad/taller_final/userinterface/bin/Debug/netcoreapp2.0/userinterface.dll
+/home/joac89/Universidad/taller_final/userinterface/bin/Debug/netcoreapp2.0/userinterface.pdb
+/home/joac89/Universidad/taller_final/userinterface/obj/Debug/netcoreapp2.0/userinterface.dll
+/home/joac89/Universidad/taller_final/userinterface/obj/Debug/netcoreapp2.0/userinterface.pdb
+/home/joac89/Universidad/taller_final/userinterface/bin/Debug/netcoreapp2.0/userinterface.xml

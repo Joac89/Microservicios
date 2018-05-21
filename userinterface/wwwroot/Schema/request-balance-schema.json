@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "RequestBalance",
+    "properties": {
+      "invoiceref": {
+        "type": "string",
+        "description": ""
+      },
+      "balancetopay": {
+        "type": "number",     
+        "format": "double", 
+        "description": ""
+      }
+    },
+    "required": [
+      "invoiceref",
+      "balancetopay"
+    ]
+  }
+  

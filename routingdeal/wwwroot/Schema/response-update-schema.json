@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "RequestDeal",
+    "properties": {
+      "invoicekey": {
+        "type": "string",
+        "description": "Clave de factura del convenio"
+      },
+      "state": {
+        "type": "string",
+        "description": "Nuevo estado del convenio"
+      }
+    },
+    "required": [
+      "invoicekey",
+      "state"
+    ]
+  }
+  

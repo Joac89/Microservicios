@@ -1,0 +1,8 @@
+<x:Envelope xmlns:x="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://www.servicios.co/pagos/schemas">
+    <x:Header/>
+    <x:Body>
+        <sch:ReferenciaFactura>
+            <sch:referenciaFactura>{0}</sch:referenciaFactura>
+        </sch:ReferenciaFactura>
+    </x:Body>
+</x:Envelope>

@@ -1,0 +1,4 @@
+{
+    "balancetopay": "#valueof($.valorFactura)",
+    "invoiceref": "#valueof($.idFactura)"
+}

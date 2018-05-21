@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RequestDeal",
+  "properties": {
+    "invoicekey": {
+      "type": "string",
+      "description": "Clave de factura del convenio"
+    },
+    "name": {
+      "type": "string",
+      "description": "Nombre del convenio"
+    },
+    "url": {
+      "type": "string",
+      "description": "Url del convenio"
+    },
+    "template": {
+      "type": "string",
+      "description": "Url de la plantilla XSLT"
+    }
+  },
+  "required": [
+    "invoicekey",
+    "name",
+    "url",
+    "template"
+  ]
+}

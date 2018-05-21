@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>routingdeal</name>
+    </assembly>
+    <members>
+        <member name="M:routingdeal.Controllers.RoutingController.GetRoutingDeal(System.String)">
+            <summary>Consultar el routing de un convenio</summary>
+            <remarks>Consulta el routing para el convenio de la factura solicitada</remarks>
+            <param name="invoiceref"></param>
+            <returns>Retorna los datos del convenio a enrutar</returns>
+            <response code="200">Ok</response>
+            <response code="500">Internal Server Error</response>    
+        </member>
+        <member name="M:routingdeal.Controllers.RoutingController.AddRoutingDeal(routingdeal.Models.RequestDeal)">
+            <summary>Registra el routing de un convenio</summary>
+            <remarks>Registra el routing para el convenio de la factura solicitada</remarks>
+            <param name="data"></param>
+            <returns>Retorna los datos del convenio registrado</returns>
+            <response code="200">Ok</response>
+            <response code="500">Internal Server Error</response>    
+        </member>
+        <member name="M:routingdeal.Controllers.RoutingController.UpdateRoutingDeal(routingdeal.Models.RequestUpdate)">
+            <summary>Actualiza el estado del routing de un convenio</summary>
+            <remarks>Actualiza el estado del routing para el convenio de la factura solicitada</remarks>
+            <param name="data"></param>
+            <returns>Retorna los datos del convenio actualizado</returns>
+            <response code="200">Ok</response>
+            <response code="500">Internal Server Error</response>    
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>userinterface</name>
+    </assembly>
+    <members>
+        <member name="M:userinterface.Controllers.DealController.CheckBalance(System.String)">
+            <summary>Consultar estado de factura</summary>
+            <remarks>Consulta el valor a pagar de la factura solicitada</remarks>
+            <param name="invoiceref"></param>
+            <returns>Retorna los datos de la factura solicitada</returns>
+            <response code="200">Ok</response>
+            <response code="500">Internal Server Error</response>    
+        </member>
+        <member name="M:userinterface.Controllers.DealController.PayService(userinterface.Models.RequestBalance)">
+            <summary>Pagar factura</summary>
+            <remarks>Paga el valor de la factura solicitada</remarks>
+            <param name="data"></param>
+            <returns>Retorna el resultado de la factura pagada o no pagada</returns>
+            <response code="200">Ok</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:userinterface.Controllers.DealController.Compensate(userinterface.Models.RequestBalance)">
+            <summary>Compensar factura</summary>
+            <remarks>Compensa el valor de la factura solicitada</remarks>
+            <param name="data"></param>
+            <returns>Retorna el resultado de la factura compensada</returns>
+            <response code="200">Ok</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+    </members>
+</doc>

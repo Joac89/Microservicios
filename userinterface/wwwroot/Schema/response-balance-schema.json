@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Response Balance",
+    "properties": {
+      "code": {
+        "type": "integer",
+        "description": "Codigo de mensaje Http"
+      },
+      "message": {
+        "type": "string",
+        "description": "Mensaje de respuesta del servicio"
+      },
+      "data": {
+        "properties": {
+          "invoiceref": {
+            "type": "string",
+            "description": ""
+          },
+          "balancetopay": {
+            "type": "number",
+            "format": "double",
+            "description": ""
+          }        
+        }
+      }
+    },
+    "required": [
+      "code"
+    ]
+  }

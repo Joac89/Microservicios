@@ -1,0 +1,11 @@
+/home/joac89/Universidad/taller_final/dispatcher/bin/Debug/netcoreapp2.0/dispatcher.deps.json
+/home/joac89/Universidad/taller_final/dispatcher/bin/Debug/netcoreapp2.0/dispatcher.runtimeconfig.json
+/home/joac89/Universidad/taller_final/dispatcher/bin/Debug/netcoreapp2.0/dispatcher.runtimeconfig.dev.json
+/home/joac89/Universidad/taller_final/dispatcher/bin/Debug/netcoreapp2.0/dispatcher.dll
+/home/joac89/Universidad/taller_final/dispatcher/bin/Debug/netcoreapp2.0/dispatcher.pdb
+/home/joac89/Universidad/taller_final/dispatcher/obj/Debug/netcoreapp2.0/dispatcher.csprojResolveAssemblyReference.cache
+/home/joac89/Universidad/taller_final/dispatcher/obj/Debug/netcoreapp2.0/dispatcher.csproj.CoreCompileInputs.cache
+/home/joac89/Universidad/taller_final/dispatcher/obj/Debug/netcoreapp2.0/dispatcher.AssemblyInfoInputs.cache
+/home/joac89/Universidad/taller_final/dispatcher/obj/Debug/netcoreapp2.0/dispatcher.AssemblyInfo.cs
+/home/joac89/Universidad/taller_final/dispatcher/obj/Debug/netcoreapp2.0/dispatcher.dll
+/home/joac89/Universidad/taller_final/dispatcher/obj/Debug/netcoreapp2.0/dispatcher.pdb
