@@ -6498,11 +6498,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/joac89/Universidad/taller_final/dispatcher/dispatcher.csproj",
+      "projectUniqueName": "/home/joac89/Universidad/taller_final/git/Microservicios/dispatcher/dispatcher.csproj",
       "projectName": "dispatcher",
-      "projectPath": "/home/joac89/Universidad/taller_final/dispatcher/dispatcher.csproj",
+      "projectPath": "/home/joac89/Universidad/taller_final/git/Microservicios/dispatcher/dispatcher.csproj",
       "packagesPath": "/home/joac89/.nuget/packages/",
-      "outputPath": "/home/joac89/Universidad/taller_final/dispatcher/obj/",
+      "outputPath": "/home/joac89/Universidad/taller_final/git/Microservicios/dispatcher/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

@@ -10,3 +10,15 @@
 /home/joac89/Universidad/taller_final/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.AssemblyInfo.cs
 /home/joac89/Universidad/taller_final/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.dll
 /home/joac89/Universidad/taller_final/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.pdb
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/bin/Debug/netcoreapp2.0/routingdeal.xml
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/bin/Debug/netcoreapp2.0/routingdeal.deps.json
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/bin/Debug/netcoreapp2.0/routingdeal.runtimeconfig.json
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/bin/Debug/netcoreapp2.0/routingdeal.runtimeconfig.dev.json
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/bin/Debug/netcoreapp2.0/routingdeal.dll
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/bin/Debug/netcoreapp2.0/routingdeal.pdb
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.csprojResolveAssemblyReference.cache
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.csproj.CoreCompileInputs.cache
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.AssemblyInfoInputs.cache
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.AssemblyInfo.cs
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.dll
+/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/Debug/netcoreapp2.0/routingdeal.pdb

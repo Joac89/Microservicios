@@ -13036,11 +13036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/joac89/Universidad/taller_final/routingdeal/routingdeal.csproj",
+      "projectUniqueName": "/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/routingdeal.csproj",
       "projectName": "routingdeal",
-      "projectPath": "/home/joac89/Universidad/taller_final/routingdeal/routingdeal.csproj",
+      "projectPath": "/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/routingdeal.csproj",
       "packagesPath": "/home/joac89/.nuget/packages/",
-      "outputPath": "/home/joac89/Universidad/taller_final/routingdeal/obj/",
+      "outputPath": "/home/joac89/Universidad/taller_final/git/Microservicios/routingdeal/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

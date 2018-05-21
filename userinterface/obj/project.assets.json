@@ -12981,11 +12981,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/joac89/Universidad/taller_final/userinterface/userinterface.csproj",
+      "projectUniqueName": "/home/joac89/Universidad/taller_final/git/Microservicios/userinterface/userinterface.csproj",
       "projectName": "userinterface",
-      "projectPath": "/home/joac89/Universidad/taller_final/userinterface/userinterface.csproj",
+      "projectPath": "/home/joac89/Universidad/taller_final/git/Microservicios/userinterface/userinterface.csproj",
       "packagesPath": "/home/joac89/.nuget/packages/",
-      "outputPath": "/home/joac89/Universidad/taller_final/userinterface/obj/",
+      "outputPath": "/home/joac89/Universidad/taller_final/git/Microservicios/userinterface/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
