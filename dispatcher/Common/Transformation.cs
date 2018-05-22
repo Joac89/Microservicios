@@ -23,35 +23,52 @@ namespace dispatcher.Common
             var pathTemplate = $"{pathEnvironment}/{template}";
             var json = "";
 
-            json = TrsJSON(strInput.Result, pathTemplate);
+            json = TransformJson(strInput.Result, pathTemplate);
             return json;
         }
 
-        public XElement RemoveAllNamespacesXml(XElement xmlDocument)
+        public string RemoveAllNamespacesXml(XElement xmlDocument)
         {
-            if (!xmlDocument.HasElements)
+            try
             {
-                XElement xElement = new XElement(xmlDocument.Name.LocalName);
-                xElement.Value = xmlDocument.Value;
+                if (!xmlDocument.HasElements)
+                {
+                    XElement xElement = new XElement(xmlDocument.Name.LocalName);
+                    xElement.Value = xmlDocument.Value;
 
-                foreach (XAttribute attribute in xmlDocument.Attributes())
-                    xElement.Add(attribute);
+                    foreach (XAttribute attribute in xmlDocument.Attributes())
+                        xElement.Add(attribute);
 
-                return xElement;
+                    return xElement.ToString();
+                }
+                return new XElement(xmlDocument.Name.LocalName, xmlDocument.Elements().Select(el => RemoveAllNamespacesXml(el))).ToString();
             }
-            return new XElement(xmlDocument.Name.LocalName, xmlDocument.Elements().Select(el => RemoveAllNamespacesXml(el)));
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in T Remove Namespaces XML: " + ex.Message);
+                return "";
+            }
         }
 
         public string CreateRequest(string pathRequest, int numRequest, string[] valuesReplace)
         {
-            var soap = $"{pathEnvironment}/{pathRequest}";
-            var soapsend = File.ReadAllText(soap);
+            var soapsend = "";
             var i = 0;
 
-            foreach (var item in valuesReplace)
+            try
             {
-                soapsend = soapsend.Replace("{" + i + "}", item);
-                i += 1;
+                var soap = $"{pathEnvironment}/{pathRequest}";
+                soapsend = File.ReadAllText(soap);
+
+                foreach (var item in valuesReplace)
+                {
+                    soapsend = soapsend.Replace("{" + i + "}", item);
+                    i += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in T Create Request JSON: " + ex.Message);
             }
 
             return soapsend;
@@ -59,19 +76,37 @@ namespace dispatcher.Common
 
         public string CreateRequest(string pathRequest, int numRequest, string valuesReplace)
         {
-            var soap = $"{pathEnvironment}/{pathRequest}";
-            var soapsend = File.ReadAllText(soap);
+            var soapsend = "";
 
-            soapsend = soapsend.Replace("{0}", valuesReplace);
+            try
+            {
+                var soap = $"{pathEnvironment}/{pathRequest}";
+
+                soapsend = File.ReadAllText(soap);
+                soapsend = soapsend.Replace("{0}", valuesReplace);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in T Create Request JSON: " + ex.Message);
+            }
 
             return soapsend;
         }
 
-        private string TrsJSON(string json, string pathTemplate)
+        private string TransformJson(string json, string pathTemplate)
         {
-            var input = json;
-            var transformer = File.ReadAllText(pathTemplate);
-            var transformedString = JsonTransformer.Transform(transformer, input);
+            var transformedString = "";
+
+            try
+            {
+                var input = json;
+                var transformer = File.ReadAllText(pathTemplate);
+                transformedString = JsonTransformer.Transform(transformer, input);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in Transformation JSON: " + ex.Message);
+            }
 
             return transformedString;
         }

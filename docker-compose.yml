@@ -1,0 +1,24 @@
+version: '2.1'
+
+services:
+  userinterface:
+    image: joac89/ms-userinterface
+    build: ./userinterface
+    ports:
+      - 9001:80
+    volumes:
+      - .:/code/userinterface
+  routingdeal:
+    image: joac89/ms-routingdeal
+    build: ./routingdeal
+    ports:
+      - 9002:80
+    volumes:
+      - .:/code/routingdeal
+  dispatcher:
+    image: joac89/ms-dispatcher
+    build: ./dispatcher
+    ports:
+      - 9003:80
+    volumes:
+      - .:/code/dispatcher

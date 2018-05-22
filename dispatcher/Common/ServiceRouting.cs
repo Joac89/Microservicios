@@ -19,13 +19,21 @@ namespace dispatcher.Common
         public async Task<ResponseDeal> GetRouting(string invoiceRef)
         {
             var client = new HttpClient();
-            var service = await client.GetAsync($"http://localhost:9002/api/v1/routing/getroutingdeal/{invoiceRef}");
             var response = new ResponseDeal();
 
-            if (service.IsSuccessStatusCode)
+            try
             {
-                var json = await service.Content.ReadAsStringAsync();
-                response = JsonConvert.DeserializeObject<ResponseDeal>(json);
+                var service = await client.GetAsync($"http://localhost:9002/api/v1/routing/getroutingdeal/{invoiceRef}");
+
+                if (service.IsSuccessStatusCode)
+                {
+                    var json = await service.Content.ReadAsStringAsync();
+                    response = JsonConvert.DeserializeObject<ResponseDeal>(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in Routing Service: " + ex.Message);
             }
 
             return response;
@@ -35,16 +43,20 @@ namespace dispatcher.Common
         {
             var client = new HttpClient();
             var result = new TransformResult();
-
-            var service = await client.GetAsync(url);
-
-
-            if (service.IsSuccessStatusCode)
+            try
             {
-                result.Result = await service.Content.ReadAsStringAsync();
-                result.MediaType = service.Content.Headers.ContentType.MediaType;
-            }
+                var service = await client.GetAsync(url);
 
+                if (service.IsSuccessStatusCode)
+                {
+                    result.Result = await service.Content.ReadAsStringAsync();
+                    result.MediaType = service.Content.Headers.ContentType.MediaType;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in Consume Rest: " + ex.Message);
+            }
             return result;
         }
 
@@ -52,7 +64,6 @@ namespace dispatcher.Common
         {
             var client = new HttpClient();
             var result = new TransformResult();
-            //var stringContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
 
             var request = new HttpRequestMessage
             {
@@ -61,13 +72,19 @@ namespace dispatcher.Common
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
             };
 
-            //var service = await client.PostAsync(url, stringContent);
-            var service = await client.SendAsync(request);
-
-            if (service.IsSuccessStatusCode)
+            try
             {
-                result.Result = await service.Content.ReadAsStringAsync();
-                result.MediaType = service.Content.Headers.ContentType.MediaType;
+                var service = await client.SendAsync(request);
+
+                if (service.IsSuccessStatusCode)
+                {
+                    result.Result = await service.Content.ReadAsStringAsync();
+                    result.MediaType = service.Content.Headers.ContentType.MediaType;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in Consume Rest: " + ex.Message);
             }
 
             return result;
@@ -77,21 +94,28 @@ namespace dispatcher.Common
         {
             var result = new TransformResult();
 
-            using (var client = new HttpClient())
+            try
             {
-                var action = url.Split("#")[1];
-                var newUrl = url.Split("#")[0];
-
-                client.DefaultRequestHeaders.Add("SOAPAction", action);
-
-                var content = new StringContent(request, Encoding.UTF8, "text/xml");
-                using (var response = await client.PostAsync(newUrl, content))
+                using (var client = new HttpClient())
                 {
-                    var soapResponse = await response.Content.ReadAsStringAsync();
+                    var action = url.Split("#")[1];
+                    var newUrl = url.Split("#")[0];
 
-                    result.Result = soapResponse;
-                    result.MediaType = "text/xml";
+                    client.DefaultRequestHeaders.Add("SOAPAction", action);
+
+                    var content = new StringContent(request, Encoding.UTF8, "text/xml");
+                    using (var response = await client.PostAsync(newUrl, content))
+                    {
+                        var soapResponse = await response.Content.ReadAsStringAsync();
+
+                        result.Result = soapResponse;
+                        result.MediaType = "text/xml";
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in Consume Soap: " + ex.Message);
             }
 
             return result;

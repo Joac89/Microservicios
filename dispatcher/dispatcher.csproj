@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="JsonTemplates\" CopyToPublishDirectory="Always"/>
+    <Folder Include="SoapTemplates\" CopyToPublishDirectory="Always"/>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="0.11.4"/>
     <PackageReference Include="Newtonsoft.Json.Schema.AspNetCore" Version="1.0.1-beta1"/>
     <PackageReference Include="JUST.NETCore" Version="2.1.3"/>

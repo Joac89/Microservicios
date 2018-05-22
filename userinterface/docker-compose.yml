@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  userinterface:
+    image: userinterface
+    build: .
+    ports:
+      - 3000:3000

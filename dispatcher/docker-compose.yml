@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  dispatcher:
+    image: dispatcher
+    build: .
+    ports:
+      - 3002:3002

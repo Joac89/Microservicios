@@ -23,11 +23,19 @@ namespace dispatcher
         static void Main(string[] args)
         {
             Console.WriteLine("Dispatcher Started");
+            System.Threading.Thread.Sleep(5000);
 
             producerConfigSend = new Dictionary<string, object> { { "bootstrap.servers", kafkaEndpointSend } };
             producerConfigGet = new Dictionary<string, object> { { "bootstrap.servers", kafkaEndpointGet } };
 
-            KafkaConsumer();
+            try
+            {
+                KafkaConsumer();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
         }
 
         private static void kafkaProducer(string message)
@@ -132,7 +140,7 @@ namespace dispatcher
         {
             var data = new TransformResult();
             var trans = new Transformation();
-            var simpleXml = trans.RemoveAllNamespacesXml(XElement.Parse(result)).ToString();
+            var simpleXml = trans.RemoveAllNamespacesXml(XElement.Parse(result));
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(simpleXml);
 

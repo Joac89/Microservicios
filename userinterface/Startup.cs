@@ -52,7 +52,6 @@ namespace userinterface
                 c.CustomSchemaIds(type => type.Name);
                 c.DescribeAllEnumsAsStrings();
                 c.IncludeXmlComments($"{AppContext.BaseDirectory}{Path.DirectorySeparatorChar}{_hostingEnv.ApplicationName}.xml");
-
                 /*var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);*/
