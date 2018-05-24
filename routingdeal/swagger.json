@@ -1,0 +1,102 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "v1.0",
+      "title": "Routing Deal",
+      "description": "Enrutador para resolver URL de convenio y XSLT de transformación",
+      "contact": {
+        "name": ": Especialización AES - PUJ",
+        "email": "aguilarcjesus@javeriana.edu.co"
+      },
+      "license": {
+        "name": "MIT",
+        "url": "http://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:9002",
+    "paths": {
+      "/api/v1/Routing/getroutingdeal/{invoiceref}": {
+        "get": {
+          "tags": [
+            "Routing"
+          ],
+          "summary": "Consultar el routing de un convenio",
+          "description": "Consulta el routing para el convenio de la factura solicitada",
+          "operationId": "ApiV1RoutingGetroutingdealByInvoicerefGet",
+          "consumes": [],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "invoiceref",
+              "in": "path",
+              "description": "",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "schema": {
+                "$ref": "#/definitions/ResponseDeal"
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/api/v1/Routing/addroutingdeal": {
+        "post": {
+          "tags": [
+            "Routing"
+          ],
+          "summary": "Registra el routing de un convenio",
+          "description": "Registra el routing para el convenio de la factura solicitada",
+          "operationId": "ApiV1RoutingAddroutingdealPost",
+          "consumes": [
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "data",
+              "in": "body",
+              "description": "",
+              "required": false,
+              "schema": {
+                "$ref": "#/definitions/RequestDeal"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "schema": {
+                "$ref": "#/definitions/ResponseDeal"
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "ResponseDeal": {
+        "$ref": "/wwwroot/Schema/response-deal-schema.json#/properties"        
+      },      
+      "RequestDeal": {
+        "$ref": "/wwwroot/Schema/request-deal-schema.json#/properties"  
+      }
+    }
+  }

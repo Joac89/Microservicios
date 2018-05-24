@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1.0",
+    "title": "User Interface",
+    "description": "Interfaz estandar para la comunicación de clientes y convenions",
+    "contact": {
+      "name": ": Especialización AES - PUJ",
+      "email": "aguilarcjesus@javeriana.edu.co"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:9001",
+  "paths": {
+    "/api/v1/Deal/checkbalance/{invoiceref}": {
+      "get": {
+        "tags": [
+          "Deal"
+        ],
+        "summary": "Consultar estado de factura",
+        "description": "Consulta el valor a pagar de la factura solicitada",
+        "operationId": "ApiV1DealCheckbalanceByInvoicerefGet",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "invoiceref",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/ResponseBalance"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/Deal/payservice": {
+      "post": {
+        "tags": [
+          "Deal"
+        ],
+        "summary": "Pagar factura",
+        "description": "Paga el valor de la factura solicitada",
+        "operationId": "ApiV1DealPayservicePost",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RequestBalance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/ResponsePayment"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/Deal/compensate": {
+      "post": {
+        "tags": [
+          "Deal"
+        ],
+        "summary": "Compensar factura",
+        "description": "Compensa el valor de la factura solicitada",
+        "operationId": "ApiV1DealCompensatePost",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RequestBalance"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/ResponsePayment"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ResponseBalance": {
+        "$ref": "/wwwroot/Schema/response-balance-schema.json#/properties" 
+    },
+    "RequestBalance": {
+        "$ref": "/wwwroot/Schema/request-balance-schema.json#/properties" 
+    },
+    "ResponsePayment": {
+        "$ref": "/wwwroot/Schema/response-payment-schema.json#/properties" 
+    }
+  }
+}

@@ -15,6 +15,7 @@ RUN dotnet publish --output /output --configuration Release
 FROM microsoft/aspnetcore:2.0
 COPY --from=build /output /app
 COPY --from=build /output/bin/Debug/netcoreapp2.0/routingdeal.xml /app/routingdeal.xml 
+COPY --from=build /output/database.txt /app/database.txt
 WORKDIR /app
-EXPOSE 3001
+#EXPOSE 3001
 ENTRYPOINT [ "dotnet", "routingdeal.dll" ]

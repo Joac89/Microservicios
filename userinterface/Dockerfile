@@ -15,5 +15,5 @@ FROM microsoft/aspnetcore:2.0
 COPY --from=build /output /app
 COPY --from=build /output/bin/Debug/netcoreapp2.0/userinterface.xml /app/userinterface.xml 
 WORKDIR /app
-EXPOSE 3000
+#EXPOSE 3000
 ENTRYPOINT [ "dotnet", "userinterface.dll" ]

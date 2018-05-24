@@ -19,9 +19,11 @@
 #ENTRYPOINT [ "dotnet", "dispatcher.dll" ]
 
 FROM microsoft/dotnet:2.0-sdk
+WORKDIR /app
 COPY *.csproj ./
-COPY JsonTemplates/*.js ./
-COPY SoapTemplates/*.xml ./
+COPY ./JsonTemplates ./JsonTemplates
+COPY ./SoapTemplates ./SoapTemplates
 RUN dotnet restore
+COPY . ./
 RUN dotnet publish -c Release -o out
-ENTRYPOINT ["dotnet", "dispatcher.dll"]
+ENTRYPOINT ["dotnet", "out/dispatcher.dll"]

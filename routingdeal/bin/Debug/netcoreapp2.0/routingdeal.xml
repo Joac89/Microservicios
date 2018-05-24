@@ -20,13 +20,5 @@
             <response code="200">Ok</response>
             <response code="500">Internal Server Error</response>    
         </member>
-        <member name="M:routingdeal.Controllers.RoutingController.UpdateRoutingDeal(routingdeal.Models.RequestUpdate)">
-            <summary>Actualiza el estado del routing de un convenio</summary>
-            <remarks>Actualiza el estado del routing para el convenio de la factura solicitada</remarks>
-            <param name="data"></param>
-            <returns>Retorna los datos del convenio actualizado</returns>
-            <response code="200">Ok</response>
-            <response code="500">Internal Server Error</response>    
-        </member>
     </members>
 </doc>

@@ -113,6 +113,7 @@ namespace routingdeal.Controllers
             }
         }
 
+        /*
         /// <summary>Actualiza el estado del routing de un convenio</summary>
         /// <remarks>Actualiza el estado del routing para el convenio de la factura solicitada</remarks>
         /// <param name="data"></param>
@@ -161,6 +162,6 @@ namespace routingdeal.Controllers
 
                 return StatusCode(500, result);
             }
-        }
+        }*/
     }
 }

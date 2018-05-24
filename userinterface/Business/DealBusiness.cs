@@ -11,6 +11,8 @@ namespace userinterface.Business
 {
     public class DealBusiness
     {
+        //private string kafkaEndpointSend = "172.17.0.1:9092"; 
+        //private string kafkaEndpointGet = "172.17.0.1:9093";
         private string kafkaEndpointSend = "localhost:9092";
         private string kafkaEndpointGet = "localhost:9093";
         private string kafkaTopicSend = "broker-replicated";
@@ -44,7 +46,7 @@ namespace userinterface.Business
                 response.Data = null;
                 response.Message = ex.Message;
             }
-
+            
             return await Task.Run(() => response);
         }
 
@@ -106,6 +108,7 @@ namespace userinterface.Business
             using (var producer = new Producer<Null, string>(producerConfigSend, null, new StringSerializer(Encoding.UTF8)))
             {
                 var dr = producer.ProduceAsync(kafkaTopicSend, null, message).Result;
+                
             }
         }
         private string KafkaConsumer()

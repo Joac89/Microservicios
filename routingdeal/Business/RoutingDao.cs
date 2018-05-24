@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using routingdeal.Models;
@@ -8,10 +9,12 @@ namespace routingdeal.Business
     public class RoutingDao
     {
         public string ConnectionString { get; set; }
+        private string AuxPathFileDb { get; set; }
 
-        public RoutingDao(string Connection)
+        public RoutingDao(string Connection, string auxPathFileDb)
         {
             ConnectionString = Connection;
+            AuxPathFileDb = auxPathFileDb;
         }
 
         private MySqlConnection Get()
@@ -27,7 +30,39 @@ namespace routingdeal.Business
 
             try
             {
-                using (var conn = Get())
+                var path = @AuxPathFileDb.Replace("wwwroot/", "");
+                var db = System.IO.File.ReadAllLines(path);
+                var id = 0;
+
+                foreach (var item in db)
+                {
+                    var line = item.Split("|");
+                    id = int.Parse(line[0]);
+                }
+                id += 1;
+                var insert = $"{id}|{data.Name}|{data.InvoiceKey}|true|{data.Url}|{data.Template}|{data.Type}|{data.RequestTemplate}|{data.NumRequest}";
+
+                using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(insert);
+                }
+
+                model.Id = id;
+                model.Name = data.Name;
+                model.InvoiceKey = data.InvoiceKey;
+                model.State = true;
+                model.Url = data.Url;
+                model.Type = data.Type;
+                model.Template = data.Template;
+                model.RequestTemplate = data.RequestTemplate;
+                model.NumRequest = data.NumRequest;
+
+                result.Code = 200;
+                result.Data = model;
+                result.Message = "OK";
+
+                /*using (var conn = Get())
                 {
                     conn.Open();
                     var cmd = new MySqlCommand($"insert into tbl_deal (name, invoicekey, state, template, url) values('{data.Name}', '{data.InvoiceKey}',1, '{data.Template}', '{data.Url}')", conn);
@@ -44,7 +79,7 @@ namespace routingdeal.Business
                         Url = data.Url,
                     };
                     result.Message = "OK";
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -62,7 +97,32 @@ namespace routingdeal.Business
 
             try
             {
-                using (var conn = Get())
+                var db = System.IO.File.ReadAllLines(@AuxPathFileDb.Replace("wwwroot/", ""));
+
+                foreach (var item in db)
+                {
+                    var line = item.Split("|");
+
+                    if (line[2] == invoicekey)
+                    {
+                        model.Id = long.Parse(line[0]);
+                        model.Name = line[1];
+                        model.InvoiceKey = line[2];
+                        model.State = bool.Parse(line[3]);                       
+                        model.Url = line[4];
+                        model.Template = line[5];
+                        model.Type = line[6];
+                        model.RequestTemplate = line[7];
+                        model.NumRequest = int.Parse(line[8]);
+
+                        break;
+                    }
+                }
+                result.Code = 200;
+                result.Data = model;
+                result.Message = "OK";
+
+                /*using (var conn = Get())
                 {
                     conn.Open();
                     var cmd = new MySqlCommand($"select id, name, invoicekey, state, template, url, type, requesttemplate, numrequest from tbl_deal where invoicekey = '{invoicekey}'", conn);
@@ -85,7 +145,7 @@ namespace routingdeal.Business
                     result.Code = 200;
                     result.Data = model;
                     result.Message = "OK";
-                }
+                }*/
             }
             catch (Exception ex)
             {

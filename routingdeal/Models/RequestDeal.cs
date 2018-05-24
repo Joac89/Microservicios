@@ -9,7 +9,34 @@ namespace routingdeal.Models
     [Serializable]
     public class RequestDeal
     {
-        [Required]
+        [DataMember(Name = "name")]
+        [Description("")]
+        public string Name { get; set; }
+
+        [DataMember(Name = "invoicekey")]
+        [Description("")]
+        public string InvoiceKey { get; set; }
+
+        [DataMember(Name = "url")]
+        [Description("")]
+        public string Url { get; set; }
+
+        [DataMember(Name = "template")]
+        [Description("")]
+        public string Template { get; set; }
+
+        [DataMember(Name = "type")]
+        [Description("")]
+        public string Type { get; set; }
+
+        [DataMember(Name = "requesttemplate")]
+        [Description("")]
+        public string RequestTemplate { get; set; }
+
+        [DataMember(Name = "numrequest")]
+        [Description("")]
+        public int NumRequest { get; set; }
+        /*[Required]
         [DataMember(Name = "invoicekey")]
         [Description("Clave de factura del convenio")]
         public string InvoiceKey { get; set; }
@@ -27,6 +54,6 @@ namespace routingdeal.Models
         [Required]
         [DataMember(Name = "template")]
         [Description("Url de la plantilla XSLT")]
-        public string Template { get; set; }
+        public string Template { get; set; }*/
     }
 }

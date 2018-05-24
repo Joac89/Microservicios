@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
+using System.Web;
 using System.Xml;
 using System.Xml.Linq;
 using Confluent.Kafka;
@@ -13,6 +15,8 @@ namespace dispatcher
 {
     public class DispatcherModule
     {
+        //private static string kafkaEndpointGet = "172.17.0.1:9092"; //"localhost:9092";
+        //private static string kafkaEndpointSend = "172.17.0.1:9093"; //"localhost:9093";
         private static string kafkaEndpointGet = "localhost:9092";
         private static string kafkaEndpointSend = "localhost:9093";
         private static string kafkaTopicGet = "broker-replicated";
@@ -23,7 +27,7 @@ namespace dispatcher
         static void Main(string[] args)
         {
             Console.WriteLine("Dispatcher Started");
-            System.Threading.Thread.Sleep(5000);
+            //System.Threading.Thread.Sleep(5000);
 
             producerConfigSend = new Dictionary<string, object> { { "bootstrap.servers", kafkaEndpointSend } };
             producerConfigGet = new Dictionary<string, object> { { "bootstrap.servers", kafkaEndpointGet } };
@@ -42,7 +46,7 @@ namespace dispatcher
         {
             var serv = new ServiceRouting();
             var routing = serv.GetRouting(message).Result;
-            var json = "";
+            var json = "empty:" + routing.Code;
             var data = new TransformResult();
             var trans = new Transformation();
             var req = "";
@@ -140,7 +144,14 @@ namespace dispatcher
         {
             var data = new TransformResult();
             var trans = new Transformation();
-            var simpleXml = trans.RemoveAllNamespacesXml(XElement.Parse(result));
+            var xm = XElement.Parse(result);
+            var simpleXml = trans.RemoveAllNamespacesXml(xm);
+
+            simpleXml = simpleXml.Replace("amp;", "").Replace("&lt;", "<").Replace("&gt;", ">");
+            
+            /*simpleXml = simpleXml.Replace("&amp;", "");
+            var encode = WebUtility.HtmlDecode(simpleXml);*/
+
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(simpleXml);
 

@@ -29,11 +29,18 @@ namespace dispatcher.Common
                 {
                     var json = await service.Content.ReadAsStringAsync();
                     response = JsonConvert.DeserializeObject<ResponseDeal>(json);
+                }else{
+                    var error = service.Content.ReadAsStringAsync().Result;
+
+                    response.Code = int.Parse(service.StatusCode.ToString());
+                    response.Message = invoiceRef + "," + error;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception in Routing Service: " + ex.Message);
+                response.Code = 500;
+                response.Message = ex.Message;
+                Console.WriteLine("Exception in Routing Service: " + ex.Message + ", " + invoiceRef);
             }
 
             return response;

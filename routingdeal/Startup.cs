@@ -34,7 +34,7 @@ namespace routingdeal
                 options.SerializerSettings.Formatting = Formatting.Indented;
             });
             services.Add(new ServiceDescriptor(typeof(RoutingDao),
-                new RoutingDao(Configuration.GetConnectionString("DefaultConnection")))
+                new RoutingDao(Configuration.GetConnectionString("DefaultConnection"), _hostingEnv.WebRootPath + "/database.txt"))
             );
             services.AddSwaggerGen(c =>
             {
