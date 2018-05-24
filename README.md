@@ -16,8 +16,9 @@ El taller está orientado a la implementación de una arquitectura de microservi
 El concepto de arquitectura de la solución actual, es una arquitectura Inventory Enterprise. A futuro, podría cambiar a Inventory Domain pues si el modelo de negocios se expande, tendríamos diferentes dominios dentro de la empresa y cada uno podría tener su inventario de servicios, y tambien un inventario de servicios empresarial.
 
 ## Arquitectura
-En la arquitectura del proyecto se hace uso de los patrones Inventory Enterprise (inicialmente), Service Contract y Publisher an Subscriber principalmente
-* [Patrones SOA](http://soapatterns.org/design_patterns/enterprise_inventory)
+En la arquitectura del proyecto se hace uso de los patrones Inventory Enterprise (inicialmente), Service Contract y Publisher an Subscriber principalmente. Ver [aquí](http://soapatterns.org/design_patterns/enterprise_inventory) los patrones SOA.
+
+![Diagrama Componentes](https://github.com/Joac89/Microservicios/blob/master/DiagArq.jpg)
 
 ### Ambiente
 El ambiente de desarrollo de la solición es sobre el sistema operativo **Ubuntu Desktop 16.0.x***, en una máquina virtual **Virtual Box**. Se tomó la decisión, para evitar los inconvenientes que genera **Docker** en **Windows** y poder usar **Visual Studio Code** desde **linux** con **Aspnet Core 2.0**.
