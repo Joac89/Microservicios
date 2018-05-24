@@ -1,13 +1,26 @@
-El taller está orientado a la implementación de una arquitectura de microservicios por eventos. Los archivos Dockerfile y Dockercompose del proyecto se encuentran en el repositorio Github.
+# Uso de Microservicios
 
-El objetivo del ejercicio es permitir que una empresa de pagos, pueda agregar y retirar convenios de pagos sin afectar la funcionalidad del cliente y sin tener que reiniciar el sistema.
+El taller está orientado a la implementación de una arquitectura de microservicios por eventos. Los archivos Dockerfile y Dockercompose del proyecto se encuentran en el repositorio Github. El objetivo del ejercicio es permitir que una empresa de pagos, pueda agregar y retirar convenios de pagos sin afectar la funcionalidad del cliente y sin tener que reiniciar el sistema.
+
+## Tabla de contenido
+1. [Concepto](#concepto)
+2. [Arquitectura](#arquitectura)
+3. [Implementación](#implementación)
+4. [Ventajas de la solución](#ventajas-de-la-solución)
+5. [Desventajas](#desventajas)
+6. [Docker](#docker)
+7. [Advertencia](#advertencia)
+8. [Conclusión](#conclusión)
 
 ## Concepto
-- El concepto de arquitectura de la solución actual, es una arquitectura Inventory Enterprise. A futuro, podría cambiar a Inventory Domain pues si el modelo de negocios se expande, tendríamos diferentes dominios dentro de la empresa y cada uno podría tener su inventario de servicios, y tambien un inventario de servicios empresarial.
+El concepto de arquitectura de la solución actual, es una arquitectura Inventory Enterprise. A futuro, podría cambiar a Inventory Domain pues si el modelo de negocios se expande, tendríamos diferentes dominios dentro de la empresa y cada uno podría tener su inventario de servicios, y tambien un inventario de servicios empresarial.
 
 ## Arquitectura
 En la arquitectura del proyecto se hace uso de los patrones Inventory Enterprise (inicialmente), Service Contract y Publisher an Subscriber principalmente
 * [Patrones SOA](http://soapatterns.org/design_patterns/enterprise_inventory)
+
+### Ambiente
+El ambiente de desarrollo de la solición es sobre el sistema operativo **Ubuntu Desktop 16.0.x***, en una máquina virtual **Virtual Box**. Se tomó la decisión, para evitar los inconvenientes que genera **Docker** en **Windows** y poder usar **Visual Studio Code** desde **linux** con **Aspnet Core 2.0**.
 
 ### Servicios implementados
 1. Servicio UserInterface
@@ -40,11 +53,8 @@ Para configurar kafka, siga los siguientes manuales que le permitirán instalarl
 * [Apache kafka quickstart](https://kafka.apache.org/quickstart)
 
 Luego de instalar y configurar kafka, se siguen los siguientes pasos:
-
 * Copiar los archivos **server.properties** y **server-1.properties**
-Los archivos se encuentran en el repositorio, estos archivos están configurados para los dos nodos que se usarán en kafka. El nodo 1 va por el puerto **9092** y el nodo 2 por el puerto **9093**
-
-la configuración de los archivos se puede encontrar en el siguiente manual online: [Apache kafka multiple brokers](http://www.benniehaelen.com/big-data/apache-kafka-part-iii-multiple-brokers/)
+Los archivos se encuentran en el repositorio, estos archivos están configurados para los dos nodos que se usarán en kafka. El nodo 1 va por el puerto **9092** y el nodo 2 por el puerto **9093**. La configuración de los archivos se puede encontrar en el siguiente manual online: [Apache kafka multiple brokers](http://www.benniehaelen.com/big-data/apache-kafka-part-iii-multiple-brokers/)
 
 * Se deben ejecutar los siguientes comandos del archivo [kafka-service-start.sh](https://github.com/Joac89/Microservicios/blob/master/kafka-config/kafka-service-start.sh) ubicado en el repositorio. Puede ejecutar los comandos paso a paso en una terminal de ubuntu, o puede ejecutar el archivo (.sh) desde una terminal (ejecuta todos los comandos automáticamente).
 
@@ -52,9 +62,7 @@ Ejecutar el archivo (.sh)
 ```
 $ /path_file/kafka-service-start.sh
 ```
-donde **path_file** es la ruta donde se guarda el archivo de comandos.
-
-Si desea ejecutarlos paso a paso, escriba los siguientes comandos:
+donde **path_file** es la ruta donde se guarda el archivo de comandos. Si desea ejecutarlos paso a paso, escriba los siguientes comandos:
 
 Nodos:
 ```
@@ -77,8 +85,13 @@ Recuerde ejecutar los comandos en diferentes consolas para poder detallar el fun
 ### Productores y consumidores
 En kafka, los productores y consumidores, se utilizan para la escucha de las solicitudes enviadas desde el servicio de negocio, a los servicios que son orquestados para dar una respuesta del consumo de los servicios de convenios.
 
-#### Uso
+### Proceso de negocio
 El servicio de negocio **UserInterface**, sirve de productor kafka para enviar los mensajes a la cola de eventos y sirve de consumidor a la respuesta a los eventos generados. **Dispatcher** sirve de productor para enviar las respuestas recibidas y transformadas desde los servicios de convenios, y como consumidor para detectar los eventos generados desde el cliente. En **Dispatcher**, tambien se realiza la transformación de datos y el enrutamiento al servicio de convenio específico a utilizar.
+
+Al momento de solicitar una consulta de saldo de una factura, el servicio de negocio envía la factura generando un evento para que el servicio de monitoreo (Dispatcher) lo detecte, capture el mensaje y proceda a lo siguiente:
+1. Consultar de acuerdo al número de factura, al servicio enrutador los datos de conexión y transformación requeridos para el servicio de convenios hacia donde se enviará la factura a consultar.
+2. Espera de respuesta, transformación de los datos de respuesta a las plantillas JSON estandarizadas y respuesta al servicio de negocio por medio de un evento.
+3. El negocio detecta el evento lanzado de respuesta por parte del monitor y entrega la respuesta al servicio de negocio.
 
 ### Ejecución
 Luego de descargar los proyectos desde el repositorio, se abren con Visual Studio Code y se ejecutan para poner en marcha el objetivo del taller.
@@ -96,7 +109,7 @@ $ /path_proyecto/dotnet restore
 ### Transformación de datos en Dispatcher
 - Para la transformación de datos, en Dispatcher se cuenta con plantillas JSON, que permitirán transformar los datos de respuesta de los diferentes servicios de convenios en un esquema estandar. Para ésto, consultar el manual **JUST for .Net Core 2** presentado anteriormente. JUST funciona de manera similar a las plantillas XSLT pero orientado a JSON exclusivamente.
 
-### Ventajas de la solución
+## Ventajas de la solución
 El taller expone las siguientes ventajas para el proceso de negocio propuesto
 * Agregar un nuevo servicio de convenios a la arquitectura sin detener el sistema
 * Utilizar herramientas de transformación de datos para estandarizar las respuestas por medio de plantillas
@@ -104,15 +117,15 @@ El taller expone las siguientes ventajas para el proceso de negocio propuesto
 * Permite interactuar con servicios REST y SOAP (bajo parámetros de configuración establecidos)
 * Servicios separados que pueden agregarse en contenedores
 
-### Desventajas
+## Desventajas
 * Costo de rendimiento en la transformación de datos de envío y recibo.
 
-### Docker
+## Docker
 La solución cuenta con los archivos **Dockerfile** y **Dockercompose*** que permiten agregar en contenedores los servicios utilizados
 
-#### Advertencia!
+## Advertencia!
 Pendiente de implementar la comunicación entre los contenedores de los servicios y **Kafka** local. Se presentaron inconvenientes al momento de la comunicación entre los contenedores y el host (máquina local) donde se estaba ejecutando el kafka.
 
-### Conclusión
+## Conclusión
 Podriamos concluir, que la solución es parte de los primeros pasos para la construcción de sistemas orientados a microservicios, flexibles y próximos a ser más frecuentes en el cámpo tecnológico de hoy en día
 
