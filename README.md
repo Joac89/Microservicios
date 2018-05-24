@@ -130,3 +130,11 @@ Pendiente de implementar la comunicación entre los contenedores de los servicio
 ## Conclusión
 Podriamos concluir, que la solución es parte de los primeros pasos para la construcción de sistemas orientados a microservicios, flexibles y próximos a ser más frecuentes en el cámpo tecnológico de hoy en día
 
+## Referencias
+* https://www.c-sharpcorner.com/article/creating-web-api-with-asp-net-core-using-visual-studio-code/
+* https://code.visualstudio.com/download
+* https://www.nuget.org/packages/JUST.NETCore/
+* https://kafka.apache.org/
+* https://hevodata.com/blog/how-to-install-kafka-on-ubuntu/
+* http://www.benniehaelen.com/big-data/apache-kafka-part-iii-multiple-brokers/
+* https://kafka.apache.org/quickstart
