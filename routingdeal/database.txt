@@ -4,3 +4,4 @@
 4|Servicio Luz - pagar|2002|true|http://localhost:7070/w1-soap-svr/PagosServiceService#pagar|JsonTemplates/json-2002.json|SOAP-POST|SoapTemplates/request-2002.xml|2
 5|Servicio Luz - compensar|2003|true|http://localhost:7070/w1-soap-svr/PagosServiceService#compensar|JsonTemplates/json-2003.json|SOAP-POST|SoapTemplates/request-2003.xml|2
 6|Servicio Agua - compensar|1003|true|http://localhost:9090/servicios/pagos/v1/payments|JsonTemplates/json-1003.json|REST-DELETE|JsonTemplates/request-1003.json|2
+7|Servicio Nuevo - consultar|3001|true|http://localhost:5000/servicios/pagos/v1/payments|JsonTemplates/json-3001.json|REST-GET|--|0
