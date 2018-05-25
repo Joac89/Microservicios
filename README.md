@@ -21,7 +21,7 @@ En la arquitectura del proyecto se hace uso de los patrones Inventory Enterprise
 ![Diagrama Componentes](https://github.com/Joac89/Microservicios/blob/master/DiagArq.jpg)
 
 ### Ambiente
-El ambiente de desarrollo de la solición es sobre el sistema operativo **Ubuntu Desktop 16.0.x***, en una máquina virtual **Virtual Box**. Se tomó la decisión, para evitar los inconvenientes que genera **Docker** en **Windows** y poder usar **Visual Studio Code** desde **linux** con **Aspnet Core 2.0**.
+El ambiente de desarrollo de la solición es sobre el sistema operativo **Ubuntu Desktop 16.0.x**, en una máquina virtual **Virtual Box**. Se tomó la decisión, para evitar los inconvenientes que genera **Docker** en **Windows** y poder usar **Visual Studio Code** desde **linux** con **Aspnet Core 2.0**.
 
 ### Servicios implementados
 1. Servicio UserInterface
@@ -122,13 +122,13 @@ El taller expone las siguientes ventajas para el proceso de negocio propuesto
 * Costo de rendimiento en la transformación de datos de envío y recibo.
 
 ## Docker
-La solución cuenta con los archivos **Dockerfile** y **Dockercompose*** que permiten agregar en contenedores los servicios utilizados
+La solución cuenta con los archivos **Dockerfile** y **Dockercompose** que permiten agregar en contenedores los servicios utilizados
 
 ## Advertencia!
 Pendiente de implementar la comunicación entre los contenedores de los servicios y **Kafka** local. Se presentaron inconvenientes al momento de la comunicación entre los contenedores y el host (máquina local) donde se estaba ejecutando el kafka.
 
 ## Conclusión
-Podriamos concluir, que la solución es parte de los primeros pasos para la construcción de sistemas orientados a microservicios, flexibles y próximos a ser más frecuentes en el cámpo tecnológico de hoy en día
+Podriamos concluir, que la solución es parte de los primeros pasos para la construcción de sistemas orientados a microservicios, flexibles y próximos a ser más frecuentes en el cámpo tecnológico de hoy en día.
 
 ## Referencias
 * https://www.c-sharpcorner.com/article/creating-web-api-with-asp-net-core-using-visual-studio-code/
