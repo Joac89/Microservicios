@@ -122,7 +122,7 @@ El taller expone las siguientes ventajas para el proceso de negocio propuesto
 * Costo de rendimiento en la transformación de datos de envío y recibo.
 
 ## Docker
-La solución cuenta con los archivos **Dockerfile** y **Dockercompose** que permiten agregar en contenedores los servicios utilizados
+La solución cuenta con los archivos **Dockerfile** y **Dockercompose** que permiten agregar en contenedores los servicios utilizados. Éste paso es opcional pues el taller puede funcionar desplegando los servicios y apache kafka localmente.
 
 ## Advertencia!
 Pendiente de implementar la comunicación entre los contenedores de los servicios y **Kafka** local. Se presentaron inconvenientes al momento de la comunicación entre los contenedores y el host (máquina local) donde se estaba ejecutando el kafka.
