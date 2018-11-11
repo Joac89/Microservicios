@@ -136,5 +136,4 @@ Podriamos concluir, que la solución es parte de los primeros pasos para la cons
 * https://www.nuget.org/packages/JUST.NETCore/
 * https://kafka.apache.org/
 * https://hevodata.com/blog/how-to-install-kafka-on-ubuntu/
-* http://www.benniehaelen.com/big-data/apache-kafka-part-iii-multiple-brokers/
 * https://kafka.apache.org/quickstart
